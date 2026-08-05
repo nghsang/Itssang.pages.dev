@@ -4,7 +4,6 @@ const video = document.querySelector(".background-video");
 const copyDiscord = document.getElementById("copyDiscord");
 const optionalImages = document.querySelectorAll("[data-optional-image]");
 
-// Nhạc được thiết lập âm lượng nhưng chỉ phát khi bấm vào
 music.volume = 0.35;
 
 optionalImages.forEach((image) => {
@@ -15,7 +14,9 @@ function setSoundState(isPlaying) {
   soundButton.classList.toggle("is-playing", isPlaying);
   soundButton.setAttribute("aria-pressed", String(isPlaying));
   soundButton.setAttribute("aria-label", isPlaying ? "Tắt nhạc" : "Bật nhạc");
-  soundButton.querySelector(".sound-tooltip").textContent = isPlaying ? "Tắt nhạc" : "Bật nhạc";
+  soundButton.querySelector(".sound-tooltip").textContent = isPlaying
+    ? "Tắt nhạc"
+    : "Bật nhạc";
 }
 
 soundButton.addEventListener("click", async () => {
@@ -62,24 +63,27 @@ if (enterBtn && enterScreen) {
   enterBtn.addEventListener("click", () => {
     // Hide screen instantly to make it feel responsive
     enterScreen.classList.add("hidden");
-    
+
     // Add entered class to trigger CSS animations
     document.body.classList.add("entered");
-    
+
     // Play music asynchronously
     if (music.paused) {
-      music.play().then(() => {
-        setSoundState(true);
-      }).catch(err => {
-        console.error("Autoplay prevented", err);
-      });
+      music
+        .play()
+        .then(() => {
+          setSoundState(true);
+        })
+        .catch((err) => {
+          console.error("Autoplay prevented", err);
+        });
     }
-    
+
     // Play video if it was paused
     if (video.paused) {
       video.play().catch(() => {});
     }
-    
+
     // Remove from DOM after fade out transition
     setTimeout(() => {
       enterScreen.remove();
