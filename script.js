@@ -44,8 +44,18 @@ async function toggleMusic() {
   }
 }
 
+const loopBtn = document.getElementById("loopBtn");
+
 if (vinylDiscBtn) vinylDiscBtn.addEventListener("click", toggleMusic);
 if (playPauseBtn) playPauseBtn.addEventListener("click", toggleMusic);
+
+if (loopBtn) {
+  loopBtn.addEventListener("click", () => {
+    music.loop = !music.loop;
+    loopBtn.classList.toggle("is-active", music.loop);
+    loopBtn.title = music.loop ? "Tắt lặp lại bài" : "Bật lặp lại bài";
+  });
+}
 
 if (seekBackBtn) {
   seekBackBtn.addEventListener("click", () => {
