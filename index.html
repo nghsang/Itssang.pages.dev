@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@700;800&family=Sora:wght@700;800&family=Syne:wght@700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
@@ -36,25 +36,125 @@
     <div class="video-shade" aria-hidden="true"></div>
     <div class="grain" aria-hidden="true"></div>
 
-    <button
-      class="sound-button"
-      id="soundButton"
-      type="button"
-      aria-label="Bật nhạc"
-      aria-pressed="false"
-    >
-      <svg class="sound-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M4 9v6h4l5 4V5L8 9H4Z"></path>
-        <path class="sound-wave wave-one" d="M16 9.5a4 4 0 0 1 0 5"></path>
-        <path class="sound-wave wave-two" d="M18.8 6.7a8 8 0 0 1 0 10.6"></path>
-      </svg>
-      <span class="sound-tooltip">Bật nhạc</span>
-    </button>
+    <!-- ── High-End Cyber Vinyl Music Player Widget ── -->
+    <div class="music-player-widget" id="musicPlayerWidget">
+      <div class="vinyl-player-card">
+        <!-- 4 Corner Accents -->
+        <span class="btn-corner top-left" aria-hidden="true"></span>
+        <span class="btn-corner top-right" aria-hidden="true"></span>
+        <span class="btn-corner bottom-left" aria-hidden="true"></span>
+        <span class="btn-corner bottom-right" aria-hidden="true"></span>
+
+        <!-- Left Side: Controls Panel -->
+        <div class="player-controls-panel">
+          <!-- Row 1: Equalizer, Time Display & Progress Bar -->
+          <div class="progress-section">
+            <div class="progress-header">
+              <div class="audio-visualizer" aria-hidden="true">
+                <span class="eq-bar bar-1"></span>
+                <span class="eq-bar bar-2"></span>
+                <span class="eq-bar bar-3"></span>
+                <span class="eq-bar bar-4"></span>
+              </div>
+              <span class="time-display" id="timeDisplay">0:00 <span class="time-total">/ 0:00</span></span>
+            </div>
+            <input
+              type="range"
+              id="progressSlider"
+              class="progress-slider"
+              min="0"
+              max="100"
+              step="0.1"
+              value="0"
+              aria-label="Thanh thời gian bài hát"
+              title="Tua thời gian"
+            />
+          </div>
+
+          <!-- Row 2: Action Buttons & Volume -->
+          <div class="actions-section">
+            <div class="playback-buttons">
+              <!-- Rewind 10s -->
+              <button class="control-btn" id="seekBackBtn" type="button" aria-label="Tua lùi 10 giây" title="Lùi 10s">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+                  <text x="12" y="14.5" font-size="6.5" font-weight="800" text-anchor="middle" fill="currentColor">10</text>
+                </svg>
+              </button>
+
+              <!-- Play / Pause -->
+              <button class="control-btn main-play-btn" id="playPauseBtn" type="button" aria-label="Phát / Tạm dừng" title="Phát / Tạm dừng">
+                <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+                  <polygon points="6 3 20 12 6 21 6 3"></polygon>
+                </svg>
+                <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="6" y="4" width="4" height="16" rx="1"></rect>
+                  <rect x="14" y="4" width="4" height="16" rx="1"></rect>
+                </svg>
+              </button>
+
+              <!-- Forward 10s -->
+              <button class="control-btn" id="seekForwardBtn" type="button" aria-label="Tua tới 10 giây" title="Tới 10s">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/>
+                  <text x="12" y="14.5" font-size="6.5" font-weight="800" text-anchor="middle" fill="currentColor">10</text>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Volume Box -->
+            <div class="volume-box is-low" id="volumeBox">
+              <button class="volume-btn" id="volumeBtn" type="button" aria-label="Bật/Tắt tiếng" title="Bật/Tắt tiếng">
+                <svg class="volume-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                  <path class="vol-wave wave-low" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                  <path class="vol-wave wave-high" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                  <path class="vol-mute-x" d="M22 9l-6 6M16 9l6 6"></path>
+                </svg>
+              </button>
+              <input
+                type="range"
+                id="volumeSlider"
+                class="volume-slider"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.35"
+                aria-label="Âm lượng nhạc"
+                title="Âm lượng"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: Glowing Spinning Vinyl Disc with Earth.png (No tonearm needle) -->
+        <button
+          class="vinyl-disc-btn"
+          id="vinylDiscBtn"
+          type="button"
+          aria-label="Phát / Tạm dừng nhạc"
+          title="Bật / Tắt nhạc"
+        >
+          <div class="vinyl-disc" id="vinylDisc">
+            <div class="vinyl-groove-ring"></div>
+            <div class="vinyl-center-label">
+              <img src="Earth.png" alt="" class="vinyl-art" aria-hidden="true" />
+              <span class="vinyl-spindle"></span>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
     <audio id="backgroundMusic" loop preload="metadata">
       <source src="Music.mp3" type="audio/mpeg" />
     </audio>
 
     <main class="profile" aria-label="Trang cá nhân của Itssang">
+      <span class="card-corner top-left" aria-hidden="true"></span>
+      <span class="card-corner top-right" aria-hidden="true"></span>
+      <span class="card-corner bottom-left" aria-hidden="true"></span>
+      <span class="card-corner bottom-right" aria-hidden="true"></span>
+
       <section class="identity">
         <div class="avatar-shell">
           <img
@@ -73,7 +173,10 @@
           />
         </div>
 
-        <h1>Nguyen Hoang Sang</h1>
+        <h1>
+          <span>Nguyen Hoang</span>
+          <span>Sang</span>
+        </h1>
         <p class="domain">Itssang.pages.dev</p>
         <p class="location">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -97,11 +200,8 @@
           <span class="status-dot" aria-label="Đang bận"></span>
         </span>
         <span class="discord-info">
-          <strong>Itssang_</strong>
-          <span
-            ><img src="KC.png" alt="" class="diamond" aria-hidden="true" />
-            CRVT</span
-          >
+          <strong>Itssang_ <span class="diamond-badge"><img src="KC.png" alt="" class="diamond" aria-hidden="true" /></span></strong>
+          <span>Developer</span>
         </span>
         <svg class="copy-icon" viewBox="0 0 24 24" aria-hidden="true">
           <rect x="9" y="9" width="10" height="10" rx="2"></rect>
@@ -112,14 +212,33 @@
         <span class="copy-message" aria-live="polite">Đã sao chép!</span>
       </button>
 
+      <a
+        href="https://itsg.pages.dev"
+        target="_blank"
+        rel="noreferrer"
+        class="itsg-link-btn"
+        aria-label="ITSG — itsg.pages.dev"
+        title="ITSG — itsg.pages.dev"
+      >
+        <span class="btn-corner top-left" aria-hidden="true"></span>
+        <span class="btn-corner top-right" aria-hidden="true"></span>
+        <span class="btn-corner bottom-left" aria-hidden="true"></span>
+        <span class="btn-corner bottom-right" aria-hidden="true"></span>
+
+        <span class="btn-side-badge" aria-hidden="true">
+          <span class="pulse-led"></span>
+        </span>
+        <span class="itsg-label">ITSG</span>
+        <span class="btn-side-badge" aria-hidden="true">
+          <span class="pulse-led"></span>
+        </span>
+      </a>
+
       <nav class="social-links" aria-label="Liên kết mạng xã hội">
         <a href="mailto:nghsang267@gmail.com" aria-label="Email" title="Email">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path
-              d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z"
-            ></path>
-            <path
-              d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z"
+              d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
             ></path>
           </svg>
         </a>
