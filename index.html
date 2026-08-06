@@ -56,7 +56,9 @@
                 <span class="eq-bar bar-3"></span>
                 <span class="eq-bar bar-4"></span>
               </div>
-              <span class="time-display" id="timeDisplay">0:00 <span class="time-total">/ 0:00</span></span>
+              <span class="time-display" id="timeDisplay"
+                >0:00 <span class="time-total">/ 0:00</span></span
+              >
             </div>
             <input
               type="range"
@@ -75,15 +77,39 @@
           <div class="actions-section">
             <div class="playback-buttons">
               <!-- Rewind 10s -->
-              <button class="control-btn" id="seekBackBtn" type="button" aria-label="Tua lùi 10 giây" title="Lùi 10s">
+              <button
+                class="control-btn"
+                id="seekBackBtn"
+                type="button"
+                aria-label="Tua lùi 10 giây"
+                title="Lùi 10s"
+              >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="currentColor" d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
-                  <text x="12" y="14.5" font-size="6.5" font-weight="800" text-anchor="middle" fill="currentColor">10</text>
+                  <path
+                    fill="currentColor"
+                    d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
+                  />
+                  <text
+                    x="12"
+                    y="14.5"
+                    font-size="6.5"
+                    font-weight="800"
+                    text-anchor="middle"
+                    fill="currentColor"
+                  >
+                    10
+                  </text>
                 </svg>
               </button>
 
               <!-- Play / Pause -->
-              <button class="control-btn main-play-btn" id="playPauseBtn" type="button" aria-label="Phát / Tạm dừng" title="Phát / Tạm dừng">
+              <button
+                class="control-btn main-play-btn"
+                id="playPauseBtn"
+                type="button"
+                aria-label="Phát / Tạm dừng"
+                title="Phát / Tạm dừng"
+              >
                 <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
                   <polygon points="6 3 20 12 6 21 6 3"></polygon>
                 </svg>
@@ -94,21 +120,51 @@
               </button>
 
               <!-- Forward 10s -->
-              <button class="control-btn" id="seekForwardBtn" type="button" aria-label="Tua tới 10 giây" title="Tới 10s">
+              <button
+                class="control-btn"
+                id="seekForwardBtn"
+                type="button"
+                aria-label="Tua tới 10 giây"
+                title="Tới 10s"
+              >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="currentColor" d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"/>
-                  <text x="12" y="14.5" font-size="6.5" font-weight="800" text-anchor="middle" fill="currentColor">10</text>
+                  <path
+                    fill="currentColor"
+                    d="M12 5V1l5 5-5 5V7c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6h2c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8z"
+                  />
+                  <text
+                    x="12"
+                    y="14.5"
+                    font-size="6.5"
+                    font-weight="800"
+                    text-anchor="middle"
+                    fill="currentColor"
+                  >
+                    10
+                  </text>
                 </svg>
               </button>
             </div>
 
             <!-- Volume Box -->
             <div class="volume-box is-low" id="volumeBox">
-              <button class="volume-btn" id="volumeBtn" type="button" aria-label="Bật/Tắt tiếng" title="Bật/Tắt tiếng">
+              <button
+                class="volume-btn"
+                id="volumeBtn"
+                type="button"
+                aria-label="Bật/Tắt tiếng"
+                title="Bật/Tắt tiếng"
+              >
                 <svg class="volume-icon" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
-                  <path class="vol-wave wave-low" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-                  <path class="vol-wave wave-high" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                  <path
+                    class="vol-wave wave-low"
+                    d="M15.54 8.46a5 5 0 0 1 0 7.07"
+                  ></path>
+                  <path
+                    class="vol-wave wave-high"
+                    d="M19.07 4.93a10 10 0 0 1 0 14.14"
+                  ></path>
                   <path class="vol-mute-x" d="M22 9l-6 6M16 9l6 6"></path>
                 </svg>
               </button>
@@ -138,7 +194,12 @@
           <div class="vinyl-disc" id="vinylDisc">
             <div class="vinyl-groove-ring"></div>
             <div class="vinyl-center-label">
-              <img src="Earth.png" alt="" class="vinyl-art" aria-hidden="true" />
+              <img
+                src="Earth.png"
+                alt=""
+                class="vinyl-art"
+                aria-hidden="true"
+              />
               <span class="vinyl-spindle"></span>
             </div>
           </div>
@@ -200,7 +261,15 @@
           <span class="status-dot" aria-label="Đang bận"></span>
         </span>
         <span class="discord-info">
-          <strong>Itssang_ <span class="diamond-badge"><img src="KC.png" alt="" class="diamond" aria-hidden="true" /></span></strong>
+          <strong
+            >Itssang_
+            <span class="diamond-badge"
+              ><img
+                src="KC.png"
+                alt=""
+                class="diamond"
+                aria-hidden="true" /></span
+          ></strong>
           <span>Developer</span>
         </span>
         <svg class="copy-icon" viewBox="0 0 24 24" aria-hidden="true">
